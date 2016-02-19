@@ -1,1 +1,24 @@
+{
+  // Required
+  "manifest_version": 2,
+  "name": "more_than_140",
+  "version": "0.0.0",
 
+  // Recommended
+  "default_locale": "en",
+  "description": "A plain text description",
+  "icons": {...},
+
+  "page_action": {...},
+
+  // Optional
+  "author": ...,
+  "automation": ...,
+  "background": {
+  	"scripts":["background.js"]
+    // Recommended
+    "persistent": false
+  },
+
+  "version_name": "0.0.0 pre-alpha"
+}

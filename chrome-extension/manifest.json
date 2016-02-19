@@ -1,24 +1,24 @@
 {
-  // Required
-  "manifest_version": 2,
-  "name": "more_than_140",
-  "version": "0.0.0",
+	// Required
+	"manifest_version": 2,
+	"name": "more_than_140",
+	"version": "0.0.0",
 
-  // Recommended
-  "default_locale": "en",
-  "description": "A plain text description",
-  "icons": {...},
+	// Recommended
+	"default_locale": "en",
+	"description": "A plain text description",
+	"icons": {
+		"16": "16x16.png",
+		"128": "128x128.png"
+  	},
 
-  "page_action": {...},
+	// Optional
+	"author": ["Ramiro Balado","Alejandro Hernandez", "Pol Mesalles"],
+	"background": {
+	"scripts":["background.js"],
+	// Recommended
+	"persistent": false
+	},
 
-  // Optional
-  "author": ...,
-  "automation": ...,
-  "background": {
-  	"scripts":["background.js"]
-    // Recommended
-    "persistent": false
-  },
-
-  "version_name": "0.0.0 pre-alpha"
+	"version_name": "0.0.0 pre-alpha"
 }

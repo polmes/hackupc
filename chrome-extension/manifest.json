@@ -11,6 +11,13 @@
 		"16": "icons/16x16.png",
 		"128": "icons/128x128.png"
   	},
+      
+    // Options page setup
+    "options_ui": {
+        "page" : "options.html",
+        
+        "chrome_style": true
+    },
 
 	// Optional
 	"author": ["Ramiro Balado","Alejandro Hernandez", "Pol Mesalles"],

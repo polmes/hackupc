@@ -1,6 +1,6 @@
 var tweets = jQuery('[data-item-type="tweet"]');
 tweets.each(function(index) {
-	if (tweet.find('.TweetTextSize').text().indexOf('1/') > -1) {
-		tweet.find('.TweetTextSize').append('THIS MIGHT WORK');
+	if (tweets.eq(index).find('.tweet-text').text().indexOf('1/') > -1) {
+		tweets.eq(index).find('.tweet-text').append('THIS MIGHT WORK');
 	}
 });

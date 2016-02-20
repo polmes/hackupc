@@ -26,8 +26,9 @@ var Tweet = function(tweet) {
 var Group = function(start, totalTweets) {
 	this.realUser = tweets[start].user;
 	var count = 0;
+	this.tweets = [];
 	for (var i = start; count < totalTweets; i++) { // begin at start to include first
-		if (tweets[i].user === realUser) {
+		if (tweets[i].user === this.realUser) {
 			this.tweets.push(tweets[i]);
 			count++;
 		}
@@ -36,7 +37,7 @@ var Group = function(start, totalTweets) {
 	this.finalTweet = mergeGroupTweets(this); // whatever
 };
 
-var tweets, groups;
+var tweets = [], groups = [];
 
 function makeTweets() {
 	jQuery('[data-item-type="tweet"]').each(function(i) {
@@ -46,3 +47,5 @@ function makeTweets() {
 		}
 	});
 }
+
+// var tweet = new Tweet(jQuery('[data-item-type="tweet"]').eq(0))

@@ -56,24 +56,19 @@ function mergeGroupTweets(group) {
 	var finalTweet = group.tweets[group.tweets.length - 1].html;
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
 		finalTweet.parent().append(group.tweets[i].html.clone());
-		// group.tweets[i].dom.addClass('animated zoomOutRight');
-		// group.tweets[i].dom.fadeOut(1000, function(i) {
-			group.tweets[i].dom.css('display', 'none');
-		// }(i));
+		group.tweets[i].dom.css('display', 'none');
 	}
+	jQuery(finalTweet).parent().find(".TweetTextSize--26px").addClass("TweetTextSize--16px");
+	jQuery(finalTweet).parent().find(".TweetTextSize--26px").removeClass("TweetTextSize--26px");
 	return finalTweet;
 }
 
 function mergeTimestamps(group) {
 	var finalTimestamp = group.tweets[group.tweets.length - 1].timestamp;
-	finalTimestamp.find(".tweet-timestamp").eq(0).append(" ["+1+"/"+group.tweets.length+"]");
+	finalTimestamp.find(".tweet-timestamp").eq(0).append(" ["+1+"/"+group.tweets.length+"] ");
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
 		finalTimestamp.append(group.tweets[i].timestamp.find(".tweet-timestamp").clone());
-		finalTimestamp.find(".tweet-timestamp").eq(group.tweets.length-i-1).append(" ["+(group.tweets.length-i)+"/"+(group.tweets.length)+"]");
-		// group.tweets[i].dom.addClass('animated zoomOutRight');
-		// group.tweets[i].dom.fadeOut(1000, function(i) {
-			//group.tweets[i].dom.css('display', 'none');
-		// }(i));
+		finalTimestamp.find(".tweet-timestamp").eq(group.tweets.length-i-1).append(" ["+(group.tweets.length-i)+"/"+(group.tweets.length)+"] ");
 	}
 	return finalTimestamp;
 }

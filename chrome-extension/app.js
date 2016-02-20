@@ -1,21 +1,4 @@
-// var tweets = jQuery('[data-item-type="tweet"]');
-
-/*tweets.each(function(index) {
-	if (tweets.eq(index).find('.tweet-text').text().indexOf('1/') > -1) {
-		tweets.eq(index).find('.tweet-text').append('THIS MIGHT WORK');
-	}
-});*/
-
-/*function getTweetText(tweet) {
-	tweet.find('.tweet-text').text();
-}*/
-
-/*function getUserName(tweet) {
-	tweet.
-}*/
-
 var Tweet = function(tweet) {
-	// this.text = tweet.find('.tweet-text').text();
 	this.dom = tweet;
 	this.html = this.dom.find('.tweet-text');
 	this.text = this.html.text();
@@ -53,17 +36,8 @@ function makeTweets() {
 	});
 }
 
-/*function makeGroups() {
-	var i = 0;
-	while (i < tweets.length) {
-		if (typeof matchIndex(tweets[i]) === "string") {
-			groups.push(new Group(i, tweets[i].tweetNumber));
-			i += groups[groups.length - 1].tweets.length - 1;
-		}
-	}
-}*/
-
 function makeGroups() {
+	groups = [];
 	for (var i = 0; i < tweets.length; i++) {
 		if (lastTweet(tweets[i])) {
 			groups.push(new Group(i, tweets[i].tweetNumber));
@@ -72,8 +46,19 @@ function makeGroups() {
 	}
 }
 
-// var tweet = new Tweet(jQuery('[data-item-type="tweet"]').eq(0))
 
 makeTweets();
 // setTimeout(makeGroups, 2500);
 makeGroups();
+console.log=console.__proto__.log;
+
+/*var target = document.getElementById("stream-items-id");
+var config = {subtree:true,childList:true,attributes:true,characterData:true}
+var observer = new MutationObserver(function(mutations){makeTweets();makeGroups();console.log("update")});
+observer.observe(target,config);*/
+
+var target = document.getElementById("stream-items-id");
+target.addEventListener("DOMSubtreeModified",function(){makeTweets();makeGroups();console.log("update")})
+
+
+

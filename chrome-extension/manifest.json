@@ -23,7 +23,7 @@
     {
       "matches": ["https://twitter.com/*"],
       "css": [],
-      "js": ["app.js"]
+      "js": ["http://code.jquery.com/jquery-1.12.0.min.js", "app.js"]
     }
   ]
 

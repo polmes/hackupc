@@ -1,15 +1,15 @@
 function matchIndex(tweet){
-	var r = new RegExp("\\d/\\d");
+	var r = new RegExp("\\d+/\\d+");
 	s=r.exec(tweet.text.substring(0,7));
 	if(s !== null){
 		return s[0];
 	} else {
 		return null;
-}
+	}
 }
 
 function getTweetNumber(tweet){
-	var r = new RegExp("^\\d");
+	var r = new RegExp("^\\d+");
 	s = r.exec(matchIndex(tweet));
 	if(s !== null){
 		return s[0];
@@ -19,7 +19,7 @@ function getTweetNumber(tweet){
 }
 
 function getTotalTweets(tweet){
-	var r = new RegExp("\\d$");
+	var r = new RegExp("\\d+$");
 	if(s !== null){
 		return s[0];
 	} else {
@@ -27,11 +27,19 @@ function getTotalTweets(tweet){
 	}
 }
 
+function lastTweet(tweet){
+	if((T=getTotalTweets(tweet))!==null){
+		return T==getTweetNumber(tweet);
+	} else {
+		return false;
+	}
+}
+
 function removeIndex(tweet){
 	var s=tweet.text.indexOf(matchIndex(tweet));
 	var l=matchIndex(tweet).length;
 	var t = tweet.text.substring(0,s)+tweet.text.substring(s+l);
-	if(t[s-1]=='['||t[s-1]=='{'){
+	if(t[s-1]=='['||t[s-1]=='{'||t[s-1]=='('){
 		t=t.substring(0,s-1)+t.substring(s+1);
 		console.log("found!");
 	}

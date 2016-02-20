@@ -54,10 +54,8 @@ function mergeGroupTweets(group) {
 	var finalTweet = group.tweets[group.tweets.length - 1].html;
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
 		finalTweet.parent().append(group.tweets[i].html.clone());
-		group.tweets[i].dom.addClass('zoomOutRight');
-		setTimeout(function() {
-			group.tweets[i].dom.css('display', 'none');
-		}, 2000);	
+		group.tweets[i].dom.addClass('animated zoomOutRight');
+		group.tweets[i].dom.delay(1500).css('display', 'none');
 	}
 	return finalTweet;
 }

@@ -1,6 +1,6 @@
 function matchIndex(tweet){
 	var r = new RegExp("\\d/\\d");
-	return r.exec(tweet.text().substring(0,7));
+	return r.exec(tweet.text.substring(0,7))[0];
 }
 
 function getTweetNumber(tweet){
@@ -14,5 +14,15 @@ function getTotalTweets(tweet){
 }
 
 function removeIndex(tweet){
-	return tweet.text.substring(0,tweet.text.indexOf(matchIndex(tweet)))+tweet.text.substring(tweet.text.indexOf(matchIndex(tweet))+matchIndex(tweet).length,20)
+	var s=tweet.text.indexOf(matchIndex(tweet));
+	var l=matchIndex(tweet).length;
+	var t = tweet.text.substring(0,s)+tweet.text.substring(s+l);
+	if(t[s-1]=='['||t[s-1]=='{'){
+		t=t.substring(0,s-1)+t.substring(s+1);
+		console.log("found!");
+	}
+	while(t[0]==" "){
+		t=t.substring(1);
+	}
+	return t;
 }

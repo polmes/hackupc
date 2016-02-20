@@ -65,6 +65,7 @@ function makeGroups() {
 	for (var i = 0; i < tweets.length; i++) {
 		if (lastTweet(tweets[i])) {
 			groups.push(new Group(i, tweets[i].tweetNumber));
+			// AND MORE ERROR HANDLING
 		}
 	} 
 }

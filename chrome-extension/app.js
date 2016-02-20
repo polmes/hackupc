@@ -65,3 +65,6 @@ function makeGroups() {
 }
 
 // var tweet = new Tweet(jQuery('[data-item-type="tweet"]').eq(0))
+
+makeTweets();
+makeGroups();

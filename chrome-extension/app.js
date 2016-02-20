@@ -91,6 +91,6 @@ makeGroups();
 }
 toServer();*/
 
-chrome.storage.sync.get(function(items) {
+/*chrome.storage.sync.get(function(items) {
 	console.log(items);
-});
+});*/

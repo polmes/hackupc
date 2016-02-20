@@ -63,3 +63,9 @@ function mergeGroupTweets(group) {
 	}
 	return finalTweet;
 }
+
+function getTokens() {
+	chrome.storage.sync.get(function(items) {
+		return items;
+	});
+}

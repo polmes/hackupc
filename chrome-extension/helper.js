@@ -53,8 +53,11 @@ function removeIndex(tweet){
 function mergeGroupTweets(group) {
 	var finalTweet = group.tweets[group.tweets.length - 1].html;
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
-		finalTweet.parent().append(group.tweets[i].html);
-		group.tweets[i].dom.css('display', 'none');
+		finalTweet.parent().append(group.tweets[i].html.clone());
+		group.tweets[i].dom.addClass('zoomOutRight');
+		setTimeout(function() {
+			group.tweets[i].dom.css('display', 'none');
+		}, 2000);	
 	}
 	return finalTweet;
 }

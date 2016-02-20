@@ -39,4 +39,6 @@ var Group = function(start, totalTweets) {
 		}
 		// NEEDS ERROR HANDLING
 	}
-}
+};
+
+// var group = new Group()

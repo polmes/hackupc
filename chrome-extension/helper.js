@@ -5,12 +5,12 @@ function matchIndex(tweet){
 
 function getTweetNumber(tweet){
 	var r = new RegExp("^\\d");
-	return r.exec(matchIndex(tweet));
+	return r.exec(matchIndex(tweet))[0];
 }
 
 function getTotalTweets(tweet){
 	var r = new RegExp("\\d$");
-	return r.exec(matchIndex(tweet));
+	return r.exec(matchIndex(tweet))[0];
 }
 
 function removeIndex(tweet){
@@ -28,10 +28,10 @@ function removeIndex(tweet){
 }
 
 function mergeGroupTweets(group) {
-	var finalTweet = group.tweets[group.tweets.length - 1];
+	var tTweet = group.tweets[group.tweets.length - 1].html;
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
-		finalTweet.push(group.tweets[i]);
+		tTweet.parent().append(group.tweets[i].html);
 		group.tweets[i].css('display: none');
 	}
-	return finalTweet;
+	return tTweet;
 }

@@ -58,7 +58,7 @@ var observer = new MutationObserver(function(mutations){makeTweets();makeGroups(
 observer.observe(target,config);*/
 
 var target = document.getElementById("stream-items-id");
-target.addEventListener("DOMSubtreeModified",function(){makeTweets();makeGroups();console.log("update")})
+jQuery("body").bind("DOMSubtreeModified",function(){makeTweets();makeGroups();console.log("update")})
 
 
 

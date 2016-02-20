@@ -54,7 +54,7 @@ function mergeGroupTweets(group) {
 	var finalTweet = group.tweets[group.tweets.length - 1].html;
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
 		finalTweet.parent().append(group.tweets[i].html);
-		group.tweets[i].dom.css('display: none');
+		group.tweets[i].dom.css('display', 'none');
 	}
 	return finalTweet;
 }

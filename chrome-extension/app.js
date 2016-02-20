@@ -57,8 +57,10 @@ var config = {subtree:true,childList:true,attributes:true,characterData:true}
 var observer = new MutationObserver(function(mutations){makeTweets();makeGroups();console.log("update")});
 observer.observe(target,config);*/
 
-var target = document.getElementById("stream-items-id");
-jQuery("body").bind("DOMSubtreeModified",function(){makeTweets();makeGroups();console.log("update")})
-
+//var target = document.getElementById("stream-items-id");
+//target.bind("DOMSubtreeModified",function(){makeTweets();makeGroups();console.log("update")})
+function f(){makeTweets();makeGroups();console.log("update");};
+f();
+setInterval(f,3000);
 
 

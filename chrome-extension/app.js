@@ -21,6 +21,11 @@ var Tweet = function(tweet) {
 	this.text = this.html.text();
 	this.user = this.dom.children().data('screen-name');
 	this.tweetNumber = getTweetNumber(this);
+
+	this.update = function() {
+		this.html.text(this.text);
+		this.dom.find('.tweet-text')[0] = this.html;
+	};
 };
 
 var Group = function(start, totalTweets) {

@@ -48,16 +48,18 @@ function removeIndex(tweet){
 		t=t.substring(1);
 	}
 	tweet.text = t;
+	tweet.update();
+	return tweet;
 }
 
 function mergeGroupTweets(group) {
-	var finalTweet = group.tweets[group.tweets.length - 1].html;
+	var finalTweet = removeIndex(group.tweets[group.tweets.length - 1]).html;
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
-		finalTweet.parent().append(group.tweets[i].html.clone());
+		finalTweet.parent().append(removeIndex(group.tweets[i]).html.clone());
 		// group.tweets[i].dom.addClass('animated zoomOutRight');
-		group.tweets[i].dom.fadeOut(1000, function() {
+		// group.tweets[i].dom.fadeOut(1000, function(i) {
 			group.tweets[i].dom.css('display', 'none');
-		});
+		// }(i));
 	}
 	return finalTweet;
 }

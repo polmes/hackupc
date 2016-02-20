@@ -12,16 +12,18 @@ $url = 'https://api.twitter.com/1.1/statuses/update.json';
 $requestMethod = 'POST';
 
 // receives $text via data
+$text = "Here's to beta testing a Twitter application that lets you completely ignore whast some would consider to be ridiculous limitations by today standards, but that are actually what make Twitter twttr, and not just another Facebook";
 
 $numberOfTweets = ceil(strlen($text)/134);
 if ($numberOfTweets < 10 && $numberOfTweets > 0) {
 	for ($i = 0; $i < $numberOfTweets; $i++) { // "[1/2] " màx 1 dígit! (també per API)
-		$tweet = '[' . $i + 1 . '/' . $numberOfTweets . '] ' . $text.substr($i * 140, 140);
+		$tweet = '[' . ($i + 1) . '/' . $numberOfTweets . '] ' . substr($text, $i * 134, 134);
+		echo $tweet;
 		$postfields = array( 'status' => $tweet );
 		$twitter = new TwitterAPIExchange($settings);
 		echo $twitter->buildOauth($url, $requestMethod)
-		    ->setPostfields($postfields)
-		    ->performRequest();
+			->setPostfields($postfields)
+			->performRequest();
 	}
 } else {
 	echo "Don't push it!";

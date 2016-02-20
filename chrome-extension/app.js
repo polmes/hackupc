@@ -59,7 +59,7 @@ observer.observe(target,config);*/
 
 //var target = document.getElementById("stream-items-id");
 //target.bind("DOMSubtreeModified",function(){makeTweets();makeGroups();console.log("update")})
-function f(){makeTweets();makeGroups();console.log("update");};
+function f(){makeTweets();makeGroups();};
 f();
 setInterval(f,3000);
 

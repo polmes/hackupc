@@ -15,6 +15,7 @@ function getTweetNumber(tweet){
 		return s[0];
 	} else {
 		return null;
+	}
 }
 
 function getTotalTweets(tweet){
@@ -23,6 +24,7 @@ function getTotalTweets(tweet){
 		return s[0];
 	} else {
 		return null;
+	}
 }
 
 function removeIndex(tweet){

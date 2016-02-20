@@ -7,3 +7,8 @@ function getTweetNumber(tweet){
 	var r=new RegExp("^\\d");
 	return r.exec(matchIndex(tweet));
 }
+
+function getTotalTweets(tweet){
+	var r=new RegExp("\\d$");
+	return r.exec(matchIndex(tweet));
+}

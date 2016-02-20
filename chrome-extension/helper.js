@@ -53,9 +53,9 @@ function removeIndex(tweet){
 }
 
 function mergeGroupTweets(group) {
-	var finalTweet = removeIndex(group.tweets[group.tweets.length - 1]).html;
+	var finalTweet = group.tweets[group.tweets.length - 1].html;
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
-		finalTweet.parent().append(removeIndex(group.tweets[i]).html.clone());
+		finalTweet.parent().append(group.tweets[i].html.clone());
 		// group.tweets[i].dom.addClass('animated zoomOutRight');
 		// group.tweets[i].dom.fadeOut(1000, function(i) {
 			group.tweets[i].dom.css('display', 'none');

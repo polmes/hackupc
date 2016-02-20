@@ -33,14 +33,14 @@ var Group = function(start, totalTweets) {
 	var count = 0;
 	this.tweets = [];
 	for (var i = start; count < totalTweets; i++) { // begin at start to include first
-		if (tweets[i].user == this.realUser) {
+		if (tweets[i].user === this.realUser) {
 			removeIndex(tweets[i]);
 			this.tweets.push(tweets[i]);
 			count++;
 		}
 		// NEEDS ERROR HANDLING
 	}
-	this.finalTweet = mergeGroupTweets(this); // whatever
+	this.finalTweet = mergeGroupTweets(this);
 };
 
 var tweets = [], groups = [];
@@ -72,4 +72,5 @@ function makeGroups() {
 // var tweet = new Tweet(jQuery('[data-item-type="tweet"]').eq(0))
 
 makeTweets();
-setTimeout(makeGroups, 2500);
+// setTimeout(makeGroups, 2500);
+makeGroups();

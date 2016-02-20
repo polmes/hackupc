@@ -42,10 +42,25 @@ var tweets = [], groups = [];
 function makeTweets() {
 	jQuery('[data-item-type="tweet"]').each(function(i) {
 		tweets[i] = new Tweet(jQuery('[data-item-type="tweet"]').eq(i));
+	});
+}
+
+/*function makeGroups() {
+	var i = 0;
+	while (i < tweets.length) {
 		if (typeof matchIndex(tweets[i]) === "string") {
 			groups.push(new Group(i, tweets[i].tweetNumber));
+			i += groups[groups.length - 1].tweets.length - 1;
 		}
-	});
+	}
+}*/
+
+function makeGroups() {
+	for (var i = 0; i < tweets.length; i++) {
+		if (lastTweet(tweets[i])) {
+			groups.push(new Group(i, tweets[i].tweetNumber));
+		}
+	} 
 }
 
 // var tweet = new Tweet(jQuery('[data-item-type="tweet"]').eq(0))

@@ -20,6 +20,7 @@ function getTweetNumber(tweet){
 
 function getTotalTweets(tweet){
 	var r = new RegExp("\\d+$");
+	s = r.exec(matchIndex(tweet));
 	if(s !== null){
 		return s[0];
 	} else {
@@ -30,7 +31,7 @@ function getTotalTweets(tweet){
 function lastTweet(tweet){
 	if((T=getTotalTweets(tweet))!==null){
 		return T==getTweetNumber(tweet);
-	} else {
+	} else {	
 		return false;
 	}
 }
@@ -46,14 +47,14 @@ function removeIndex(tweet){
 	while(t[0]==" "){
 		t=t.substring(1);
 	}
-	return t;
+	tweet.text = t;
 }
 
 function mergeGroupTweets(group) {
-	var tTweet = group.tweets[group.tweets.length - 1].html;
+	var finalTweet = group.tweets[group.tweets.length - 1].html();
 	for (var i = group.tweets.length - 2; i >= 0; i--) {
-		tTweet.parent().append(group.tweets[i].html);
-		group.tweets[i].css('display: none');
+		finalTweet.parent().append(group.tweets[i].html);
+		group.tweets[i].dom.css('display: none');
 	}
-	return tTweet;
+	return finalTweet;
 }

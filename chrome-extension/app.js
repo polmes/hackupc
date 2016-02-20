@@ -20,19 +20,8 @@ var Tweet = function(tweet) {
 	this.text = this.html.text();
 	this.user = tweet.children().data('screen-name');
 	this.dom = tweet;
-	this.tweetNumber = getTweetNumber(tweet);
+	this.tweetNumber = getTweetNumber(this);
 };
-
-var tweets, groups;
-
-function makeTweets() {
-	jQuery('[data-item-type="tweet"]').each(function(i) {
-		tweets[i] = new Tweet(jQuery('[data-item-type="tweet"]').eq(i));
-		if (typeof matchIndex(tweets[i]) === "string") {
-			groups.push(new Group(i, tweets[i].tweetNumber));
-		}
-	});
-}
 
 var Group = function(start, totalTweets) {
 	this.realUser = tweets[start].user;
@@ -47,5 +36,13 @@ var Group = function(start, totalTweets) {
 	this.finalTweet = mergeGroupTweets(this); // whatever
 };
 
-// var group = new Group()
+var tweets, groups;
 
+function makeTweets() {
+	jQuery('[data-item-type="tweet"]').each(function(i) {
+		tweets[i] = new Tweet(jQuery('[data-item-type="tweet"]').eq(i));
+		if (typeof matchIndex(tweets[i]) === "string") {
+			groups.push(new Group(i, tweets[i].tweetNumber));
+		}
+	});
+}

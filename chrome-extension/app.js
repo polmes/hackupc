@@ -28,7 +28,8 @@ var Group = function(start, totalTweets) {
 	var count = 0;
 	this.tweets = [];
 	for (var i = start; count < totalTweets; i++) { // begin at start to include first
-		if (tweets[i].user === this.realUser) {
+		if (tweets[i].user == this.realUser) {
+			removeIndex(tweets[i]);
 			this.tweets.push(tweets[i]);
 			count++;
 		}

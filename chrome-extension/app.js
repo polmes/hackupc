@@ -19,6 +19,7 @@ var Tweet = function(tweet) {
 	this.dom = tweet;
 	this.html = this.dom.find('.tweet-text');
 	this.text = this.html.text();
+	this.timestamp = this.dom.find('.time');
 	this.user = this.dom.children().data('screen-name');
 	this.tweetNumber = getTweetNumber(this);
 
@@ -41,6 +42,7 @@ var Group = function(start, totalTweets) {
 		// NEEDS ERROR HANDLING
 	}
 	this.finalTweet = mergeGroupTweets(this);
+	this.finalTimestamp = mergeTimestamps(this);
 };
 
 var tweets = [], groups = [];
@@ -67,7 +69,7 @@ function makeGroups() {
 			groups.push(new Group(i, tweets[i].tweetNumber));
 			// AND MORE ERROR HANDLING
 		}
-	} 
+	}
 }
 
 // var tweet = new Tweet(jQuery('[data-item-type="tweet"]').eq(0))

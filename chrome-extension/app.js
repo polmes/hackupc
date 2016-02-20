@@ -16,10 +16,10 @@
 
 var Tweet = function(tweet) {
 	// this.text = tweet.find('.tweet-text').text();
-	this.html = tweet.find('.tweet-text');
-	this.text = this.html.text();
-	this.user = tweet.children().data('screen-name');
 	this.dom = tweet;
+	this.html = this.dom.find('.tweet-text');
+	this.text = this.html.text();
+	this.user = this.dom.children().data('screen-name');
 	this.tweetNumber = getTweetNumber(this);
 };
 

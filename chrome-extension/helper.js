@@ -12,3 +12,7 @@ function getTotalTweets(tweet){
 	var r = new RegExp("\\d$");
 	return r.exec(matchIndex(tweet));
 }
+
+function removeIndex(tweet){
+	return tweet.text.substring(0,tweet.text.indexOf(matchIndex(tweet)))+tweet.text.substring(tweet.text.indexOf(matchIndex(tweet))+matchIndex(tweet).length,20)
+}

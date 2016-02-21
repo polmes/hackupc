@@ -24,10 +24,10 @@ function save_options() {
 function restore_options() {
 	// Use default value color = 'red' and likesColor = true.
 	chrome.storage.sync.get({
-		oauth_access_token: "XXX",
-		oauth_access_token_secret: "XXX",
-		consumer_key : "XXX",
-		consumer_secret : "XXX"
+		oauth_access_token: "",
+		oauth_access_token_secret: "",
+		consumer_key : "",
+		consumer_secret : ""
 	}, function(items) {
 		document.getElementById('oauth_access_token').value = items.oauth_access_token;
 		document.getElementById('oauth_access_token_secret').value = items.oauth_access_token_secret;

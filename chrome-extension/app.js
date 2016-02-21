@@ -50,15 +50,10 @@ function makeGroups() {
 makeTweets();
 // setTimeout(makeGroups, 2500);
 makeGroups();
+
 console.log=console.__proto__.log;
 
-/*var target = document.getElementById("stream-items-id");
-var config = {subtree:true,childList:true,attributes:true,characterData:true}
-var observer = new MutationObserver(function(mutations){makeTweets();makeGroups();console.log("update")});
-observer.observe(target,config);*/
 
-//var target = document.getElementById("stream-items-id");
-//target.bind("DOMSubtreeModified",function(){makeTweets();makeGroups();console.log("update")})
 function f(){makeTweets();makeGroups();};
 f();
 setInterval(f,3000);

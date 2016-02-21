@@ -62,6 +62,7 @@ function mergeGroupTweets(group) {
 	return finalTweet;
 }
 
+
 function mergeTimestamps(group) {
 	var finalTimestamp = group.tweets[group.tweets.length - 1].timestamp;
 	finalTimestamp.find(".tweet-timestamp").eq(0).append(" ["+1+"/"+group.tweets.length+"] ");
@@ -70,4 +71,10 @@ function mergeTimestamps(group) {
 		finalTimestamp.find(".tweet-timestamp").eq(group.tweets.length-i-1).append(" ["+(group.tweets.length-i)+"/"+(group.tweets.length)+"] ");
 	}
 	return finalTimestamp;
+}
+
+function getTokens() {
+	chrome.storage.sync.get(function(items) {
+		return items;
+	});
 }

@@ -63,10 +63,12 @@ function isTooLong() {
 	else return false;
 }
 
-if (isTooLong()) {
-	jQuery('.tweet-btn').removeAttr('disabled');
-	jQuery('.tweet-btn').removeClass('disabled');
-}
+jQuery('.tweet-counter').bind("DOMSubtreeModified", function() {
+	if (isTooLong()) {
+		jQuery('.tweet-btn').removeAttr('disabled');
+		jQuery('.tweet-btn').removeClass('disabled');
+	}
+});
 
 // Necessary to change Chrome's security permissions
 jQuery.ajax({

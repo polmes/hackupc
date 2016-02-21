@@ -93,6 +93,7 @@ jQuery('.tweet-btn').click(function() {
 			},
 			success: function(response) {
 				jQuery('body').prepend(response);
+				jQuery('[name="tweet"]').find('div').text('');
 			}
 		});
 	}

@@ -71,32 +71,47 @@ jQuery('.tweet-counter').bind("DOMSubtreeModified", function() {
 });
 
 // Necessary to change Chrome's security permissions
-jQuery.ajax({
-	type: 'POST',
-	url: 'http://ec2-52-28-157-47.eu-central-1.compute.amazonaws.com/more_than_140/app.php',
-	crossDomain: true,
-	data: {
-		action: 'test'
-	},
-	success: function(response) {
-		console.log(response);
-	}
-});
+function testAjax(tokens){
+	jQuery.ajax({
+		type: 'POST',
+		url: 'http://ec2-52-28-157-47.eu-central-1.compute.amazonaws.com/more_than_140/app.php',
+		crossDomain: true,
+		data: {
+			action: 'test'
+			/*options: {
+				oauth_access_token: tokens.oauth_access_token,
+				oauth_access_token_secret: tokens.oauth_access_token_secret,
+				consumer_key: tokens.consumer_key,
+				consumer_secret: tokens.consumer_secret
+			}*/
+		},
+		success: function(response) {
+			// jQuery('body').prepend(response);
+			console.log(response);
+		}
+	});
+}
+getTokens(testAjax);
 
-jQuery('.tweet-btn').click(function() {
-	if (isTooLong()) {
-		jQuery.ajax({
-			type: 'POST',
-			url: 'http://ec2-52-28-157-47.eu-central-1.compute.amazonaws.com/more_than_140/app.php',
-			crossDomain: true,
-			data: {
-				action: 'tweet',
-				text: jQuery('[name="tweet"]').find('div').text()
-			},
-			success: function(response) {
-				jQuery('body').prepend(response);
-				jQuery('[name="tweet"]').find('div').text('');
-			}
-		});
-	}
-});
+function requestTweet(tokens){
+	jQuery('.tweet-btn').click(function() {
+		if (isTooLong()) {
+			jQuery.ajax({
+				type: 'POST',
+				url: 'http://ec2-52-28-157-47.eu-central-1.compute.amazonaws.com/more_than_140/app.php',
+				crossDomain: true,
+				data: {
+					action: 'tweet',
+					text: jQuery('[name="tweet"]').find('div').text(),
+					options: tokens
+				},
+				success: function(response) {
+					jQuery('body').prepend(response);
+					jQuery('[name="tweet"]').find('div').text('');
+					jQuery('.tweet-form').find('div[style="position: absolute; visibility: hidden;"]').remove(); // weird twttr elements
+				}
+			});
+		}
+	});
+}
+getTokens(requestTweet);

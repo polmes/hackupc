@@ -73,8 +73,16 @@ function mergeTimestamps(group) {
 	return finalTimestamp;
 }
 
-function getTokens() {
-	chrome.storage.sync.get(function(items) {
-		return items;
-	});
+function getTokens(callback) {
+	chrome.storage.sync.get(callback);
 }
+
+/*function getTokens() {
+	chrome.storage.sync.get(function(items) {
+		var elements = [];
+		for (var item in items) {
+			elements.push(item);
+		}
+	});
+	
+}*/

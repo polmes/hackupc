@@ -1,17 +1,20 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: *'); // for chrome
 
 if (isset($_POST['action']) && !empty($_POST['action'])) {
 	$action = $_POST['action'];
 	if ($action == 'tweet') {
 		require_once('TwitterAPIExchange.php');
 
-		$settings = array(
-		    'oauth_access_token' => "558781242-AWUMoimK6Ao921GLOaMdGaSMSk1tQwtrU2msvjB3",
-		    'oauth_access_token_secret' => "036hlZYnfzDEJUgGMjzzetvx4RaGvPioFxYs8EQr36RfE",
-		    'consumer_key' => "xkQhOk8uoZL8bDzaujfZiUqEC",
-		    'consumer_secret' => "PjXTXAUjJjCRoRINJtLUFFEOLW6woXarIvf2uYwruQgdu5uTLI"
-		);
+		if (!empty($_POST['options'])) $options = $_POST['options'];
+        else die("Hmmm... that's weird");
+
+        $settings = array(
+            'oauth_access_token' => $options['oauth_access_token'],
+            'oauth_access_token_secret' => $options['oauth_access_token_secret'],
+            'consumer_key' => $options['consumer_key'],
+            'consumer_secret' => $options['consumer_secret']
+        );
 
 		$url = 'https://api.twitter.com/1.1/statuses/update.json';
 		$requestMethod = 'POST';
@@ -36,6 +39,7 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 		}
 	} else if ($action == 'test') {
 		echo "Alright!";
+		// var_dump($_POST['options']);
 	}
 } else {
 	echo "Bad luck";

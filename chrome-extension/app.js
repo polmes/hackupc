@@ -54,7 +54,6 @@ makeGroups();
 jQuery('.alert-messages').remove();
 console.log=console.__proto__.log;
 
-
 function f(){makeTweets();makeGroups();};
 f();
 setInterval(f,3000);
@@ -68,6 +67,19 @@ if (isTooLong()) {
 	jQuery('.tweet-btn').removeAttr('disabled');
 	jQuery('.tweet-btn').removeClass('disabled');
 }
+
+// Necessary to change Chrome's security permissions
+jQuery.ajax({
+	type: 'POST',
+	url: 'http://ec2-52-28-157-47.eu-central-1.compute.amazonaws.com/more_than_140/app.php',
+	crossDomain: true,
+	data: {
+		action: 'test'
+	},
+	success: function(response) {
+		console.log(response);
+	}
+});
 
 jQuery('.tweet-btn').click(function() {
 	if (isTooLong()) {

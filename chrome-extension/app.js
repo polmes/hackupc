@@ -36,7 +36,7 @@ function makeTweets() {
 }
 
 function makeGroups() {
-	groups = [];
+	// groups = [];
 	for (var i = 0; i < tweets.length; i++) {
 		if (lastTweet(tweets[i])) {
 			groups.push(new Group(i, tweets[i].tweetNumber));

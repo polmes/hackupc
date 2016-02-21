@@ -59,4 +59,29 @@ function f(){makeTweets();makeGroups();};
 f();
 setInterval(f,3000);
 
+function isTooLong() {
+	if (jQuery('.tweet-counter').text() < 0) return true;
+	else return false;
+}
 
+if (isTooLong()) {
+	jQuery('.tweet-btn').removeAttr('disabled');
+	jQuery('.tweet-btn').removeClass('disabled');
+}
+
+jQuery('.tweet-btn').click(function() {
+	if (isTooLong()) {
+		jQuery.ajax({
+			type: 'POST',
+			url: 'http://ec2-52-28-157-47.eu-central-1.compute.amazonaws.com/more_than_140/app.php',
+			crossDomain: true,
+			data: {
+				action: 'tweet',
+				text: jQuery('[name="tweet"]').find('div').text()
+			},
+			success: function(response) {
+				jQuery('body').prepend(response);
+			}
+		});
+	}
+});

@@ -51,6 +51,7 @@ makeTweets();
 // setTimeout(makeGroups, 2500);
 makeGroups();
 
+jQuery('.alert-messages').remove();
 console.log=console.__proto__.log;
 
 

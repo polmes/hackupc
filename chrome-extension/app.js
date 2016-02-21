@@ -1,13 +1,12 @@
 var Tweet = function(tweet) {
 	this.dom = tweet;
-	this.html = this.dom.find('.tweet-text');
+	this.html = this.dom.find('.tweet-text').eq(0);
 	this.text = this.html.text();
 	this.timestamp = this.dom.find('.time');
 	this.user = this.dom.children().data('screen-name');
 	this.tweetNumber = getTweetNumber(this);
 
 	this.update = function() {
-		this.html.text(this.text);
 		this.dom.find('.tweet-text')[0] = this.html;
 	};
 };

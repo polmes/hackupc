@@ -1,4 +1,4 @@
-function matchIndex(tweet){
+function matchIndex(tweet){//returns 4/5 , 2/3 , etc
 	var r = new RegExp("\\d+/\\d+");
 	s=r.exec(tweet.text.substring(0,7));
 	if(s !== null){
@@ -37,16 +37,16 @@ function lastTweet(tweet){
 }
 
 function removeIndex(tweet){
-	var s=tweet.text.indexOf(matchIndex(tweet));
+	var s=tweet.html.html().indexOf(matchIndex(tweet));
 	var l=matchIndex(tweet).length;
-	var t = tweet.text.substring(0,s)+tweet.text.substring(s+l);
-	if(t[s-1]=='['||t[s-1]=='{'||t[s-1]=='('){
-		t=t.substring(0,s-1)+t.substring(s+1);
+	var h = tweet.html.html().substring(0,s)+tweet.html.html().substring(s+l);
+	if(h[s-1]=='['||h[s-1]=='{'||h[s-1]=='('){
+		h=h.substring(0,s-1)+h.substring(s+1);
 	}
-	while(t[0]==" "){
-		t=t.substring(1);
+	while(h[0]==" "){
+		h=h.substring(1);
 	}
-	tweet.text = t;
+	tweet.html.html(h);
 	tweet.update();
 	return tweet;
 }
@@ -84,5 +84,5 @@ function getTokens(callback) {
 			elements.push(item);
 		}
 	});
-	
+
 }*/

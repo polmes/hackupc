@@ -24,16 +24,18 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 		if ($numberOfTweets < 10 && $numberOfTweets > 0) {
 			for ($i = 0; $i < $numberOfTweets; $i++) { // "[1/2] " màx 1 dígit! (també per API)
 				$tweet = '[' . ($i + 1) . '/' . $numberOfTweets . '] ' . substr($text, $i * 134, 134);
-				echo $tweet;
+				// echo $tweet;
 				$postfields = array( 'status' => $tweet );
 				$twitter = new TwitterAPIExchange($settings);
-				echo $twitter->buildOauth($url, $requestMethod)
-					->setPostfields($postfields)
-					->performRequest();
+				$twitter->buildOauth($url, $requestMethod)
+					   	->setPostfields($postfields)
+						->performRequest();
 			}
 		} else {
 			echo "Don't push it!";
 		}
+	} else if ($action == 'test') {
+		echo "Alright!";
 	}
 } else {
 	echo "Bad luck";
